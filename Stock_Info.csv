@@ -1,0 +1,16 @@
+pid,brand,colour,size,fabric,length,type,price,stock
+1,Dillinger,teal blue,S,cotton,long,printed,1199,50
+2,Tommy Hilfiger,navy blue,M,cotton,regular,printed,1799,60
+3,ONLY,green,L,polyester,crop,striped,1299,80
+4,Zink London,white,M,cotton,crop,solid,1299,90
+5,H&M,black,S,cotton,regular,striped,1039,70
+6,Free Authority,pink,L,polyester,long,printed,899,45
+7,Pepe Jeans,black,M,cotton,regular,printed,1199,89
+8,Forever 21,maroon,S,cotton,regular,printed,999,78
+9,Levis,red,S,cotton,regular,printed,1599,12
+10,Mango,green,M,cotton,long,striped,1390,88
+11,Vero Moda,orange,S,viscose rayon,crop,striped,799,62
+12,Mango,black,M,cotton,regular,printed,990,20
+13,Dillinger,purple,M,cotton,regular,solid,699,34
+14,Levis,blue,M,cotton,regular,printed,1499,98
+15,H&M,maroon,M,cotton,long,printed,599,85

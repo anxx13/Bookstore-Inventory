@@ -1,0 +1,24 @@
+<html lang="en">
+    <head>
+        <title>Shop T-Shirts</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <h4 class="c1">Update Quantity of a Product</h4>
+        <center>
+        <form action="/updatestock" method="post">
+            <label>Product Id: </label>
+            <input type="number" placeholder="Enter product Id" name="id"><br>
+            
+            <label>New Stock: </label>
+            <input type="number" placeholder="Enter quantity" name="stock"><br>
+            
+            <br>
+            <button id="update">Update</button>
+        </form>
+        <a href="/" class="c2">Back to Home</a>
+        </center>
+    </body>
+</html>

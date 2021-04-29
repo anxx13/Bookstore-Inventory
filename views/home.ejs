@@ -1,0 +1,43 @@
+<html lang="en">
+    <head>
+        <title>Shop T-Shirts</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <center>
+        <h1 class="c1">Inventory Management System</h1>
+        <h2 class="c1">Welcome</h2>
+        
+        <h3><a href="/create" class="c2">Add New Product</a></h3>
+        <h3><a href="/updateprice" class="c2">Update Price</a></h3>
+        <h3><a href="/updatestock" class="c2">Update Stock</a></h3>
+        <h3><a href="/delete" class="c2">Delete Product</a></h3>        
+        </center>
+        <center>
+            <table>
+                <tr>
+                    <th>Product ID</th>
+                    <th>Brand</th>
+                    <th>Colour</th>
+                    <th>Size</th>
+                    <th>Price</th>
+                    <th>Stock</th>
+                </tr>
+                <% for(var i=0;i<data.length;i++){ %>
+                    <tr>
+                        <td><%= data[i].pid %></td>
+                        <td><%= data[i].brand %></td>
+                        <td><%= data[i].colour %></td>
+                        <td><%= data[i].size %></td>
+                        <td><%= data[i].price %></td>
+                        <td><%= data[i].stock %></td>
+                    </tr>
+                <% } %>
+            </table>
+        </center>
+
+        
+    </body>
+</html>

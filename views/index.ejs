@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html> 
+<head>
+   <title>MY APP</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h3>Users</h3>
+<ul>	
+  <% for(var i=0; i<users.length; i++) { %>
+    <li class="user">
+      <span><%= users[i] %></span>
+    </li>
+  <% } %>
+  </ul>
+  </body>
+  </html>
