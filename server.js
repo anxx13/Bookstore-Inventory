@@ -5,7 +5,7 @@ const bodyParser=require("body-parser")
 //Mongo Connection
 const MongoClient =require("mongodb").MongoClient
 const url='mongodb://127.0.0.1:27017';
-const dbName='Tshirt_Inventory';
+const dbName='Books_Inventory';
 let db
 MongoClient.connect(url, (err,client) => {
         if(err) return console.log(err);
@@ -32,11 +32,17 @@ app.get('/', (req, res) => {
 app.get('/create', (req, res) => {
     res.render('add1.ejs')
 })
+
 app.post('/AddData',(req,res)=>{
-    db.collection('Stock').save(req.body,(err,result)=>{
-        if(err) return console.log(err);
+    db.collection('Stock').find({pid:req.body.pid}).toArray((err,result)=>{
+        if(result.length>=1){ 
+            res.redirect('/')
+        }
+        else{
+        db.collection('Stock').save(req.body)
         res.redirect('/')
-    })
+        }
+    })   
 })
 
 app.get('/editconfirmation', (req, res) => {
@@ -59,7 +65,7 @@ app.post('/updatestock',(req,res)=>{
         }
         db.collection('Stock').findOneAndUpdate({pid:req.body.id},{$set:{stock: (parseInt(s)+parseInt(req.body.stock)).toString()}},{sort : {_id:-1}},(err,result)=>{
             if(err) return res.send(err)
-            console.log(req.body.id+'stock updated')
+            console.log(req.body.id+' stock updated')
             res.redirect('/')
         })
     })
@@ -84,8 +90,13 @@ app.get('/delete', (req, res) => {
 app.post('/delete',(req,res)=>{
     db.collection('Stock').findOneAndDelete({pid:req.body.id},(err,result)=>{
         if(err) return console.log('id not found')
-        res.redirect('/')
+        res.redirect('/',)
     })
 })
+app.get('/deletebutton',(req,res)=>{
+    var a = req.query.pid;
+    db.collection('Stock').deleteOne({pid:a});
+      res.redirect('/');
+    })
 app.listen(8000, () => {
     console.log('listening on 8000')});    
