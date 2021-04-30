@@ -22,7 +22,7 @@ app.use(bodyParser.json())
 app.use(express.static('public'))
 
 app.get('/', (req, res) => {
-    db.collection('Stock').find().toArray( (err,result)=>{
+    db.collection('Stock').find().sort({"pid":1}).collation({locale:"en_US", numericOrdering:true}).toArray( (err,result)=>{
     if(err) return console.log(err)
     res.render('home1.ejs',{data:result})
     })
@@ -45,10 +45,6 @@ app.post('/AddData',(req,res)=>{
     })   
 })
 
-app.get('/editconfirmation', (req, res) => {
-    res.render('editconfirmation.ejs')
-})
-
 //Update Stock
 app.get('/updatestock', (req, res) => {
     res.render('updatestock1.ejs')
@@ -65,7 +61,7 @@ app.post('/updatestock',(req,res)=>{
         }
         db.collection('Stock').findOneAndUpdate({pid:req.body.id},{$set:{stock: (parseInt(s)+parseInt(req.body.stock)).toString()}},{sort : {_id:-1}},(err,result)=>{
             if(err) return res.send(err)
-            console.log(req.body.id+' stock updated')
+            //console.log(req.body.id+' stock updated')
             res.redirect('/')
         })
     })
@@ -78,7 +74,7 @@ app.get('/updateprice', (req, res) => {
 app.post('/updateprice',(req,res)=>{
     db.collection('Stock').findOneAndUpdate({pid:req.body.id},{$set:{price:req.body.price}},{sort : {_id:-1}},(err,result)=>{
         if(err) return res.send(err)
-        console.log(req.body.id+' price updated')
+        //console.log(req.body.id+' price updated')
         res.redirect('/')
     })
 })
